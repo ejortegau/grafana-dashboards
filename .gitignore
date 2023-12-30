@@ -1,0 +1,4 @@
+vendor/
+environments/*jsonnet
+jsonnetfile.json
+jsonnetfile.lock.json
