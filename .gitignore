@@ -1,4 +1,5 @@
 vendor/
-environments/*jsonnet
-jsonnetfile.json
-jsonnetfile.lock.json
+
+!environments/
+# environments/**
+!environments/sample/sample.jsonnet.template
