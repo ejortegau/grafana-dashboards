@@ -19,7 +19,7 @@ local standardLegend = {
     showLegend: true,
 };
 
-local timeSeries(title) = gTimeSeries.new(title) + gTimeSeries.queryOptions.withDatasourceMixin(queries.ds);
+local timeSeries(title) = gTimeSeries.new(title) + gTimeSeries.queryOptions.withDatasourceMixin(queries.node_ds);
 local timeSeriesWithLegend(title, legend) = timeSeries(title) + gTimeSeries.options.withLegend(legend); 
 local timeSeriesWithStandardLegend(title) = timeSeriesWithLegend(title, standardLegend);
 // local timeSeriesPercentage(ts) = ts + gT
