@@ -1,5 +1,5 @@
 vendor/
 
 !environments/
-# environments/**
+environments/**
 !environments/sample/sample.jsonnet.template
