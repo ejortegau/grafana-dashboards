@@ -11,7 +11,10 @@ echo Installing jsonnet-bundler
 go install -a github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@latest || die "Failed to install jsonnet-bundler"
 
 echo Installing grafonnet
-jb install github.com/grafana/grafonnet/gen/grafonnet-latest@main || die "Failed to install grafonnet-latest"
+jb install github.com/grafana/grafonnet/gen/grafonnet-v10.1.0@main || die "Failed to install grafonnet-latest"
 
-echo Please install grizzly following the directions in https://grafana.github.io/grizzly/installation/
+echo Installing Grizzly jsonnet library
+jb install github.com/grafana/jsonnet-libs/grizzly || die "Failed to install grizzly jsonnet libraries"
+
+echo Please install grizzly binary following the directions in https://grafana.github.io/grizzly/installation/
 echo Then configure it for your environment as described in https://grafana.github.io/grizzly/authentication/

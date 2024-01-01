@@ -41,14 +41,20 @@ You can verify that your Grizzly configuration is correct by running
 ```shell
 grr get Dashboard.${uid_of_existent_dashboard}
 ```
-If everything is correct, it should show you a YAML representation of the dashboard.
+If everything is correct, it should show you a YAML representation of the dashboard.+
 
 ## Running
 
-After this, `jsonnet` can simply be run as:
+After this, you can run `jsonnet` to generate the `json` representation of any of the dashboards, for example:
 
 ```shell
 jsonnet node/details.jsonnet
 ```
 
-and it will print to standard output the generated dashboard.
+It will be shown in the standard output.
+
+Alternatively,  you can ask Grizzly to apply it by running the following
+
+```shell
+grr  apply node/grizzly.jsonnet -J environments/<environment_subdir>,vendor
+```

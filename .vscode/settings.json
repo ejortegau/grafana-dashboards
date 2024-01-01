@@ -1,0 +1,8 @@
+{
+    "jsonnet.languageServer.lint": true,
+    "jsonnet.languageServer.tankaMode": false,
+    "jsonnet.languageServer.jpath": [
+        "vendor/",
+        "environments/sample/"
+    ]
+}

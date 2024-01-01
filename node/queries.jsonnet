@@ -7,9 +7,14 @@ local node_ds = {
     uid: env.node_datasource_uid
 };
 
-local cpuQ = "1 - node_memory_MemAvailable_bytes{instance=\"rpi-4-01\"}/node_memory_MemTotal_bytes{instance=\"rpi-4-01\"}";
+local cpuQ = "1 - node_memory_MemAvailable_bytes{instance=\"rpi-4-01\"}/node_memory_MemTotal_bytes{}";
+
+local query(ds, queryStr, legend) = g.query.prometheus.new(ds, cpuQ) 
+    + g.query.prometheus.withDatasource(ds)
+    + g.query.prometheus.withLegendFormat(legend)
+;
 
 {
     node_ds : node_ds,
-    cpu: g.query.prometheus.new(node_ds, cpuQ) + g.query.prometheus.withDatasource(node_ds),
+    cpu: query(node_ds, cpuQ, "{{instance}}"),
 }

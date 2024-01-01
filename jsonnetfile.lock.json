@@ -24,6 +24,16 @@
     {
       "source": {
         "git": {
+          "remote": "https://github.com/grafana/jsonnet-libs.git",
+          "subdir": "grizzly"
+        }
+      },
+      "version": "02db06f540086fa3f67d487bd01e1b314853fb8f",
+      "sum": "yY8w1JvVAuxB3Z62R3OxDVcSRPUKIvEWQZ2ShyD7uis="
+    },
+    {
+      "source": {
+        "git": {
           "remote": "https://github.com/jsonnet-libs/docsonnet.git",
           "subdir": "doc-util"
         }

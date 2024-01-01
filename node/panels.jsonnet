@@ -19,17 +19,21 @@ local standardLegend = {
     showLegend: true,
 };
 
-local timeSeries(title) = gTimeSeries.new(title) + gTimeSeries.queryOptions.withDatasourceMixin(queries.node_ds);
-local timeSeriesWithLegend(title, legend) = timeSeries(title) + gTimeSeries.options.withLegend(legend); 
-local timeSeriesWithStandardLegend(title) = timeSeriesWithLegend(title, standardLegend);
-// local timeSeriesPercentage(ts) = ts + gT
+local timeSeries(title, targets) = gTimeSeries.new(title)
+    + gTimeSeries.queryOptions.withDatasourceMixin(queries.node_ds) 
+    + gTimeSeries.queryOptions.withTargets(targets);
+local timeSeriesWithLegend(title, legend, targets) = timeSeries(title, targets) + gTimeSeries.options.withLegend(legend); 
+local timeSeriesWithStandardLegend(title, targets) = timeSeriesWithLegend(title, standardLegend, targets);
+local timeSeriesPercentageUnitWithStandardLegend(title, targets) = timeSeriesWithStandardLegend(title, targets)
+    + gTimeSeries.standardOptions.withUnit("percentunit");
 
 
 {
-    rows: {
-        cpu: collapsedPannel("cpu") + gRow.withPanels(timeSeriesWithStandardLegend("CPU"))
-    },
+    // rows: {
+    //     cpu: collapsedPannel("cpu") + gRow.withPanels(timeSeriesWithStandardLegend("CPU"))
+    // },
     panels: [
-        timeSeriesWithStandardLegend("CPU") + gTimeSeries.queryOptions.withTargets(queries.cpu)
+        timeSeriesPercentageUnitWithStandardLegend("CPU utilization", queries.cpu)
+        + gTimeSeries.panelOptions.withGridPos(8, 12, 0, 0)
     ],
 }
